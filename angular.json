@@ -5,39 +5,9 @@
   "projects": {
     "shell": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true,
-          "changeDetection": "OnPush",
-          "displayBlock": true,
-          "prefix": "shell"
-        },
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:resolver": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
       "root": "projects/shell",
       "sourceRoot": "projects/shell/src",
-      "prefix": "app",
+      "prefix": "shell",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -94,9 +64,119 @@
           "defaultConfiguration": "development"
         }
       }
+    },
+    "@alexandregallais/markdown-reader": {
+      "projectType": "library",
+      "root": "projects/alexandregallais/markdown-reader",
+      "sourceRoot": "projects/alexandregallais/markdown-reader/src",
+      "prefix": "mdr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/alexandregallais/markdown-reader/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/alexandregallais/markdown-reader/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/alexandregallais/markdown-reader/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@alexandregallais/utils": {
+      "projectType": "library",
+      "root": "projects/alexandregallais/utils",
+      "sourceRoot": "projects/alexandregallais/utils/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/alexandregallais/utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/alexandregallais/utils/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/alexandregallais/utils/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/alexandregallais/utils/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   },
-  "cli": {
-    "schematicCollections": ["angular-eslint"]
+  "schematics": {
+    "@schematics/angular:application": {
+      "skipTests": true,
+      "style": "scss",
+      "standalone": true,
+      "experimentalZoneless": true,
+      "minimal": true,
+      "routing": true,
+      "serverRouting": false,
+      "ssr": false,
+      "strict": true
+    },
+    "@schematics/angular:component": {
+      "displayBlock": true,
+      "changeDetection": "OnPush",
+      "skipSelector": true,
+      "style": "scss",
+      "type": "component",
+      "skipTests": true
+    },
+    "@schematics/angular:class": {
+      "skipTests": true
+    },
+    "@schematics/angular:directive": {
+      "skipTests": true
+    },
+    "@schematics/angular:enum": {},
+    "@schematics/angular:guard": {
+      "functional": true,
+      "implements": ["CanActivate"],
+      "skipTests": true
+    },
+    "@schematics/angular:interceptor": {
+      "functional": true,
+      "skipTests": true
+    },
+    "@schematics/angular:interface": {},
+    "@schematics/angular:library": {
+      "standalone": true
+    },
+    "@schematics/angular:pipe": {
+      "skipTests": true
+    },
+    "@schematics/angular:resolver": {
+      "functional": true,
+      "skipTests": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
+    },
+    "@schematics/angular:ng-new": {
+      "skipTests": true
+    },
+    "@schematics/angular:web-worker": {
+      "snippet": true
+    }
   }
 }

@@ -1,6 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { routes } from './app/app.routes';
+import { provideHttpClient } from '@angular/common/http';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
+    provideRouter(routes, withHashLocation()),
+    provideHttpClient(),
+  ],
+}).catch((err: unknown) => {
+  console.error(err);
+});

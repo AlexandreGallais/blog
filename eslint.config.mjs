@@ -35,21 +35,50 @@ export default typescript.config(
     rules: {
       'sort-keys': 'off',
       'sort-imports': 'off',
+      'max-statements': 'off',
       'new-cap': 'off',
+      'no-console': ['error', { allow: ['warn', 'error'] }],
       'no-duplicate-imports': 'off',
+      'no-undefined': 'off',
+      'no-ternary': 'off',
+      'no-nested-ternary': 'off',
+      'one-var': ['error', 'never'],
       '@typescript-eslint/no-extraneous-class': 'warn',
+      '@typescript-eslint/no-magic-numbers': ['error', { ignore: [0, 1, -1] }],
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'default',
+          format: ['camelCase'],
+        },
+        {
+          selector: 'memberLike',
+          format: ['PascalCase'],
+        },
+        {
+          selector: 'property',
+          format: ['camelCase'],
+        },
+        {
+          selector: 'typeLike',
+          format: ['PascalCase'],
+        },
+      ],
+      '@typescript-eslint/prefer-enum-initializers': 'off',
     },
   },
   {
     files: ['**/*.html'],
     extends: [...angular.configs.templateAll],
-    rules: {},
+    rules: {
+      '@angular-eslint/template/i18n': 'off',
+      '@angular-eslint/template/no-call-expression': 'off',
+    },
   },
   {
-    files: ['src/index.html'],
+    files: ['projects/shell/src/index.html'],
     rules: {
       'prettier/prettier': 'off',
-      '@angular-eslint/template/i18n': 'off',
     },
   },
 );

@@ -2,7 +2,8 @@
   "name": "blog",
   "version": "0.0.0",
   "scripts": {
-    "shell:serve": "ng serve --project=shell --no-hmr"
+    "shell:serve": "ng serve --project=shell --no-hmr",
+    "@alexandregallais/markdown-reader:build": "ng build --project='@alexandregallais/markdown-reader'"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.3.1",
     "globals": "^16.0.0",
+    "ng-packagr": "^19.2.0",
     "prettier": "^3.5.3",
     "stylelint": "^16.19.1",
     "stylelint-config-recess-order": "^6.0.0",
