@@ -1,4 +1,7 @@
+import type { HeaderLevelEnum } from '@alexandregallais/utils/src/lib/enums/header-level.enum';
+
 export interface HeaderModel {
-  content: string;
-  element: HTMLHeadingElement;
+  readonly content: string;
+  readonly element: HTMLHeadingElement;
+  readonly headerLevel: HeaderLevelEnum;
 }

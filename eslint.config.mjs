@@ -44,7 +44,12 @@ export default typescript.config(
       'no-nested-ternary': 'off',
       'one-var': ['error', 'never'],
       '@typescript-eslint/no-extraneous-class': 'warn',
-      '@typescript-eslint/no-magic-numbers': ['error', { ignore: [0, 1, -1] }],
+      '@typescript-eslint/no-magic-numbers': [
+        'error',
+        {
+          ignoreEnums: true,
+        },
+      ],
       '@typescript-eslint/naming-convention': [
         'error',
         {
@@ -65,6 +70,7 @@ export default typescript.config(
         },
       ],
       '@typescript-eslint/prefer-enum-initializers': 'off',
+      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
     },
   },
   {
