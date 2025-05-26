@@ -33,6 +33,7 @@ export default typescript.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      'id-length': 'off',
       'sort-keys': 'off',
       'sort-imports': 'off',
       'max-statements': 'off',
@@ -43,13 +44,7 @@ export default typescript.config(
       'no-ternary': 'off',
       'no-nested-ternary': 'off',
       'one-var': ['error', 'never'],
-      '@typescript-eslint/no-extraneous-class': 'warn',
-      '@typescript-eslint/no-magic-numbers': [
-        'error',
-        {
-          ignoreEnums: true,
-        },
-      ],
+      '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/naming-convention': [
         'error',
         {
@@ -57,18 +52,20 @@ export default typescript.config(
           format: ['camelCase'],
         },
         {
-          selector: 'memberLike',
+          selector: 'typeLike',
+          format: ['PascalCase'],
+        },
+        {
+          selector: 'enumMember',
           format: ['PascalCase'],
         },
         {
           selector: 'property',
           format: ['camelCase'],
         },
-        {
-          selector: 'typeLike',
-          format: ['PascalCase'],
-        },
       ],
+      '@typescript-eslint/member-ordering': 'off',
+      '@typescript-eslint/no-extraneous-class': 'warn',
       '@typescript-eslint/prefer-enum-initializers': 'off',
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
     },

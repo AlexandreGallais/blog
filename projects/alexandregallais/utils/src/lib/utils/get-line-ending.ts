@@ -1,4 +1,4 @@
-import { LineEndingEnum } from '@alexandregallais/utils';
+import { LineEndingEnum } from '../enums';
 
 export const getLineEnding = (value: string): LineEndingEnum => {
   if (value.includes('\r\n')) {

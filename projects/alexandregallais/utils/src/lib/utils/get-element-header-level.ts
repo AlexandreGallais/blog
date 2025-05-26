@@ -1,4 +1,4 @@
-import { HeaderLevelEnum } from '@alexandregallais/utils';
+import { HeaderLevelEnum } from '../enums';
 
 export const getElementHeaderLevel = (element: Element): HeaderLevelEnum => {
   switch (element.tagName) {

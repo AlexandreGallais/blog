@@ -1,4 +1,5 @@
-import { getLineEnding, LineEndingEnum } from '@alexandregallais/utils';
+import { LineEndingEnum } from '../enums';
+import { getLineEnding } from './get-line-ending';
 
 export const getLinesFromText = (value: string): string[] => {
   const lineEnding = getLineEnding(value);
