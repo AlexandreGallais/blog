@@ -15,7 +15,7 @@ export const createCircularSectorFromRadialLineUtil = (
     MathConstant.FullCircleDegrees;
 
   return {
-    center: radialLine.center,
+    center: radialLine.origin,
     radius: radialLine.length,
     originAngle: radialLine.angle,
     startAngle,

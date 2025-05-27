@@ -19,7 +19,9 @@ export const resolveCircularSectorOverlapsUtil = (
     return sectors;
   }
 
-  const sorted = [...sectors].sort((a, b) => a.startAngle - b.startAngle);
+  const sorted = structuredClone(sectors).sort(
+    (a, b) => a.startAngle - b.startAngle,
+  );
 
   sorted.forEach((a, i, arr) => {
     const b =
@@ -29,12 +31,26 @@ export const resolveCircularSectorOverlapsUtil = (
       return;
     }
 
+    if (b.startAngle < a.startAngle) {
+      b.startAngle += 360;
+      b.endAngle += 360;
+    }
+
     if (a.endAngle <= b.startAngle) {
       return;
     }
 
     a.endAngle -= (a.endAngle - b.startAngle) * MathConstant.Half;
     b.startAngle = a.endAngle;
+  });
+
+  sorted.forEach((sector) => {
+    sector.startAngle %= 360;
+    sector.endAngle %= 360;
+
+    if (sector.endAngle < sector.startAngle) {
+      sector.endAngle += 360;
+    }
   });
 
   return sorted;
