@@ -1,3 +1,4 @@
+export type * from './affine-2d-matrix.model';
 export type * from './circle.model';
 export type * from './circular-sector.model';
 export type * from './circular-sector-from-radial-line.model';
