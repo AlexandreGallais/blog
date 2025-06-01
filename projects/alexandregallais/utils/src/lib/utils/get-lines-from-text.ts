@@ -5,7 +5,7 @@ export const getLinesFromText = (value: string): string[] => {
   const lineEnding = getLineEnding(value);
 
   if (lineEnding === LineEndingEnum.Unknown) {
-    throw new Error('');
+    return [value];
   }
 
   const splitter =

@@ -1,12 +1,14 @@
+import type { ElementRef } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
   effect,
-  inject,
+  viewChild,
 } from '@angular/core';
 import { httpResource } from '@angular/common/http';
-import { MarkdownReaderService } from '@alexandregallais/markdown-reader';
+import { createBlocksFromTextUtil } from '@alexandregallais/markdown-reader';
 import { getRect } from '@alexandregallais/svg-shape-creator/src/lib/rectangle';
+import { createElementFromBlockUtils } from '@alexandregallais/markdown-reader/src/lib/utils/create-element-from-block.utils';
 
 @Component({
   selector: 'div[shell]',
@@ -16,10 +18,22 @@ import { getRect } from '@alexandregallais/svg-shape-creator/src/lib/rectangle';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  public markdownReaderService = inject(MarkdownReaderService);
   public dPath = getRect();
   protected markdown = httpResource.text('markdown.md');
+  private readonly element =
+    viewChild.required<ElementRef<HTMLDivElement>>('element');
   protected markdownEffect = effect(() => {
-    this.markdownReaderService.toto(this.markdown.value());
+    const value = this.markdown.value();
+
+    if (value === undefined) {
+      return;
+    }
+
+    const t = createBlocksFromTextUtil(value);
+    t.forEach((a) => {
+      this.element().nativeElement.append(createElementFromBlockUtils(a));
+    });
+
+    console.log(t);
   });
 }

@@ -33,6 +33,7 @@ export default typescript.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      'capitalized-comments': 'off',
       'id-length': 'off',
       'sort-keys': 'off',
       'sort-imports': 'off',
