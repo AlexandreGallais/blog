@@ -1,24 +1,43 @@
-import type { CreateElementFunctionType } from '@alexandregallais/markdown-reader/src/lib/structures';
+import { getLastIndexUtil, UTILS } from '@alexandregallais/utils';
+import type { CreateElementFunctionType } from '../structures';
+import {
+  parseInlineMarkdown,
+  renderInlineMarkdownToNodes,
+} from '@alexandregallais/markdown-reader/src/lib/utils/inline';
 
 export const createElementParagraphFromBlockUtils: CreateElementFunctionType<
   HTMLParagraphElement
 > = (block) => {
   const element = document.createElement('p');
+  let br = false;
 
-  block.forEach((line) => {
-    const textNode = document.createTextNode(line);
+  block.forEach((line, i) => {
+    renderInlineMarkdownToNodes(parseInlineMarkdown(line)).forEach(
+      (el, ii, arr) => {
+        element.append(el);
 
-    element.append(textNode);
+        if (getLastIndexUtil(arr) !== ii) {
+          return;
+        }
 
-    if (line.endsWith('\\')) {
-      textNode.textContent = line.slice(0, -1);
+        if (
+          getLastIndexUtil(block) !== i &&
+          el.textContent?.endsWith('\\') === true
+        ) {
+          el.textContent = line.slice(
+            UTILS.ARRAY.FIRST_INDEX,
+            UTILS.NUMBER.MINUS_ONE,
+          );
 
-      const brElement = document.createElement('br');
-      element.append(brElement);
-    }
+          element.append(document.createElement('br'));
+          br = true;
+        } else if (!br && i) {
+          el.textContent = ` ${el.textContent}`;
+          br = false;
+        }
+      },
+    );
   });
 
-  return {
-    element,
-  };
+  return element;
 };

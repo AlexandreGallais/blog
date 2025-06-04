@@ -1,3 +1,8 @@
+@use '@ibm/plex-sans/scss' as PlexSans with (
+  $font-prefix: '@ibm/plex-sans'
+);
+@include PlexSans.all;
+
 :host {
   position: fixed;
   inset: 0;

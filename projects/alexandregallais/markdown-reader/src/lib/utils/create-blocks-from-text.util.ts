@@ -1,12 +1,12 @@
-import { getLinesFromText } from '@alexandregallais/utils';
+import { getLinesFromTextUtil } from '@alexandregallais/utils';
 import type { BlockType } from '../structures';
 
-export const createBlocksFromTextUtil = (document: string): BlockType[] => {
+export const createBlocksFromTextUtil = (text: string): BlockType[] => {
   const blocks: BlockType[] = [];
   let block: BlockType = [];
   let isBlockCode = false;
 
-  getLinesFromText(document).forEach((line) => {
+  getLinesFromTextUtil(text).forEach((line) => {
     const trimmedLine = line.trim();
 
     if (!isBlockCode && trimmedLine === '') {
@@ -17,12 +17,10 @@ export const createBlocksFromTextUtil = (document: string): BlockType[] => {
 
     block.push(line);
 
-    if (isBlockCode && /^```/u.exec(trimmedLine)) {
-      isBlockCode = false;
-    }
-
     if (/^```\w+/u.exec(trimmedLine)) {
       isBlockCode = true;
+    } else if (isBlockCode && /^```/u.exec(trimmedLine)) {
+      isBlockCode = false;
     }
   });
 

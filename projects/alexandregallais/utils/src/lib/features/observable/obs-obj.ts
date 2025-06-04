@@ -1,6 +1,6 @@
 import type { ObjectType } from '../../structures';
-import { isDeepEqual } from '../../utils';
-import type { Observable, Observer, Unobserve } from './observable.type';
+import { isDeepEqualUtil } from '../../utils';
+import type { Observable, Observer, Unobserve } from './index';
 
 interface ObsObserveOptions {
   emitOnObserve?: boolean;
@@ -41,7 +41,10 @@ export const obsObj = <T extends ObjectType>(
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   returnFn.set = (object, options = initOptions): void => {
-    if (options.equalityCheck === true && isDeepEqual(currentObject, object)) {
+    if (
+      options.equalityCheck === true &&
+      isDeepEqualUtil(currentObject, object)
+    ) {
       return;
     }
 

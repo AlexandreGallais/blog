@@ -1,4 +1,4 @@
-import type { Observable, Observer, Unobserve } from './observable.type';
+import type { Observable, Observer, Unobserve } from './index';
 
 type ValuesType<T> = {
   [K in keyof T]: T[K] extends Observable<infer R> ? R : never;

@@ -1,21 +1,14 @@
 import type { CircularSectorModel } from '@alexandregallais/svg-shape-creator/src/lib/structures';
-import {
-  ArrayConstant,
-  getLastIndex,
-  getNextIndex,
-  MathConstant,
-} from '@alexandregallais/utils';
+import { addOneUtil, getLastIndexUtil, UTILS } from '@alexandregallais/utils';
 
 /* eslint-disable @typescript-eslint/naming-convention */
-const Constant = {
-  MinTwoSector: 2,
-} as const;
+const MIN_TWO_SECTOR = 2;
 /* eslint-enable @typescript-eslint/naming-convention */
 
 export const resolveCircularSectorOverlapsUtil = (
   sectors: CircularSectorModel[],
 ): CircularSectorModel[] => {
-  if (sectors.length < Constant.MinTwoSector) {
+  if (sectors.length < MIN_TWO_SECTOR) {
     return sectors;
   }
 
@@ -25,7 +18,9 @@ export const resolveCircularSectorOverlapsUtil = (
 
   sorted.forEach((a, i, arr) => {
     const b =
-      arr[i === getLastIndex(arr) ? ArrayConstant.FirstIndex : getNextIndex(i)];
+      arr[
+        i === getLastIndexUtil(arr) ? UTILS.ARRAY.FIRST_INDEX : addOneUtil(i)
+      ];
 
     if (b === undefined) {
       return;
@@ -40,7 +35,7 @@ export const resolveCircularSectorOverlapsUtil = (
       return;
     }
 
-    a.endAngle -= (a.endAngle - b.startAngle) * MathConstant.Half;
+    a.endAngle -= (a.endAngle - b.startAngle) * UTILS.MATH.HALF;
     b.startAngle = a.endAngle;
   });
 

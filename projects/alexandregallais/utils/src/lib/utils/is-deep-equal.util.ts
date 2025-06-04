@@ -1,7 +1,9 @@
-import { isObjectOrArray } from './is-object-or-array';
-import { isObject } from './is-object';
+import { isObjectOrArrayUtil, isObjectUtil } from './index';
 
-export const isDeepEqual = (object1: unknown, object2: unknown): boolean => {
+export const isDeepEqualUtil = (
+  object1: unknown,
+  object2: unknown,
+): boolean => {
   if (Object.is(object1, object2)) {
     return true;
   }
@@ -10,7 +12,7 @@ export const isDeepEqual = (object1: unknown, object2: unknown): boolean => {
     return true;
   }
 
-  if (!isObjectOrArray(object1) || !isObjectOrArray(object2)) {
+  if (!isObjectOrArrayUtil(object1) || !isObjectOrArrayUtil(object2)) {
     return false;
   }
 
@@ -23,10 +25,12 @@ export const isDeepEqual = (object1: unknown, object2: unknown): boolean => {
       return false;
     }
 
-    return object1.every((value, index) => isDeepEqual(value, object2[index]));
+    return object1.every((value, index) =>
+      isDeepEqualUtil(value, object2[index]),
+    );
   }
 
-  if (!isObject(object1) || !isObject(object2)) {
+  if (!isObjectUtil(object1) || !isObjectUtil(object2)) {
     return false;
   }
 
@@ -38,7 +42,7 @@ export const isDeepEqual = (object1: unknown, object2: unknown): boolean => {
   }
 
   for (const key of keys1) {
-    if (!isDeepEqual(object1[key], object2[key])) {
+    if (!isDeepEqualUtil(object1[key], object2[key])) {
       return false;
     }
   }

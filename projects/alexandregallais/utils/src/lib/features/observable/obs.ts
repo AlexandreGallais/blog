@@ -1,5 +1,5 @@
 import type { PrimitiveType } from '../../structures';
-import type { Observable, Observer, Unobserve } from './observable.type';
+import type { Observable, Observer, Unobserve } from './index';
 
 interface ObsObserveOptions {
   emitOnObserve?: boolean;

@@ -1,8 +1,8 @@
 import { LineEndingEnum } from '../enums';
-import { getLineEnding } from './get-line-ending';
+import { getLineEndingUtil } from './index';
 
-export const getLinesFromText = (value: string): string[] => {
-  const lineEnding = getLineEnding(value);
+export const getLinesFromTextUtil = (value: string): string[] => {
+  const lineEnding = getLineEndingUtil(value);
 
   if (lineEnding === LineEndingEnum.Unknown) {
     return [value];

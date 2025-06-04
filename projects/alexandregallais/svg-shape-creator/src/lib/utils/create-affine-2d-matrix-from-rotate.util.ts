@@ -1,18 +1,16 @@
 import type { Affine2dMatrixModel } from '../structures';
-import { MathConstant } from '@alexandregallais/utils';
+import { UTILS } from '@alexandregallais/utils';
 
 /* eslint-disable @typescript-eslint/naming-convention */
-const Constant = {
-  DefaultCenter: 0,
-} as const;
+const DEFAULT_CENTER = 0;
 /* eslint-enable @typescript-eslint/naming-convention */
 
 export const createAffine2dMatrixFromRotateUtil = (
   angle: number,
-  cx: number = Constant.DefaultCenter,
-  cy: number = Constant.DefaultCenter,
+  cx: number = DEFAULT_CENTER,
+  cy: number = DEFAULT_CENTER,
 ): Affine2dMatrixModel => {
-  const rad = (angle * Math.PI) / MathConstant.HalfCircleDegrees;
+  const rad = (angle * Math.PI) / UTILS.MATH.HALF_CIRCLE_DEGREES;
   const cos = Math.cos(rad);
   const sin = Math.sin(rad);
 

@@ -2,15 +2,23 @@
 
 ## Introduction
 
-This is a sample markdown document demonstrating various markdown features.
+***This*** is a sample markdown document demonstrating various markdown features.
+
+[google](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
+
+![msdf](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
 
 ## Text Formatting
 
 **Bold text** and *italic text* are common formatting options.
-You can also use ~~strikethrough~~ text.
+You can also use **~~strikethrough~~** ~text~.
 
 Multi lines\
 text
+
+mdr
+lol
+kikoo
 
 ## Lists
 
@@ -20,7 +28,33 @@ text
 - Item 2
   - Nested item 2.1
   - Nested item 2.2
+    - lol\
+      mdr
 - Item 3
+  - Nested item 3.1
+    - A
+      - B
+    - A
+      - B
+      - B
+        - C
+        - C
+      - B
+    - A
+      - B
+        - C
+          - D
+            - E
+              - F
+    - A
+- 0
+  - Nested item 3.2
+    - lol\
+      mdr
+  - Nested item 3.2
+    - lol
+      mdr
+- Item 4
 
 ### Ordered List
 
@@ -96,3 +130,7 @@ function greet(user: User): string {
 const sampleUser: User = {id: 1, name: "John Doe", email: "johndoe@example.com"};
 console.log(greet(sampleUser));
 ```
+
+> qfq
+
+- sdf

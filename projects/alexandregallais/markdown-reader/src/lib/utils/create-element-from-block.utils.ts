@@ -1,14 +1,14 @@
-import type {
-  BlockType,
-  CreateElementFunctionType,
-} from '@alexandregallais/markdown-reader/src/lib/structures';
-import { ArrayConstant } from '@alexandregallais/utils';
-import { createElementHeaderFromBlockUtils } from '@alexandregallais/markdown-reader/src/lib/utils/create-element-header-from-block.utils';
-import { createElementParagraphFromBlockUtils } from '@alexandregallais/markdown-reader/src/lib/utils/create-element-paragraph-from-block.utils';
+import { UTILS } from '@alexandregallais/utils';
+import type { BlockType, CreateElementFunctionType } from '../structures';
+import {
+  createElementHeaderFromBlockUtils,
+  createElementListFromBlockUtils,
+  createElementParagraphFromBlockUtils,
+} from './index';
 
 export const createElementFromBlockUtils = (block: BlockType): HTMLElement => {
-  const marker = block[ArrayConstant.FirstIndex]?.trim().split(' ')[
-    ArrayConstant.FirstIndex
+  const marker = block[UTILS.ARRAY.FIRST_INDEX]?.trim().split(' ')[
+    UTILS.ARRAY.FIRST_INDEX
   ];
 
   if (marker === undefined) {
@@ -23,17 +23,12 @@ export const createElementFromBlockUtils = (block: BlockType): HTMLElement => {
     '####': createElementHeaderFromBlockUtils,
     '#####': createElementHeaderFromBlockUtils,
     '######': createElementHeaderFromBlockUtils,
+    '-': createElementListFromBlockUtils,
   };
   /* eslint-enable @typescript-eslint/naming-convention */
 
   const markerFunction =
     markerFunctionMap[marker] ?? createElementParagraphFromBlockUtils;
 
-  const el = markerFunction(block).element;
-
-  if (el === undefined) {
-    throw new Error('');
-  }
-
-  return el;
+  return markerFunction(block);
 };

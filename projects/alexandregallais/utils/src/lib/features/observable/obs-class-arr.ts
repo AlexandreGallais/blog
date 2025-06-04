@@ -1,10 +1,10 @@
-import { isDeepEqual } from '../../utils';
+import { isDeepEqualUtil } from '../../utils';
 import type {
   ClassObjectObservable,
   Observable,
   Observer,
   Unobserve,
-} from './observable.type';
+} from './index';
 
 interface ObsObserveOptions {
   emitOnObserve?: boolean;
@@ -57,7 +57,7 @@ export const obsClassArr = <T extends ClassObjectObservable<any>>(
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   returnFn.set = (list, options = initOptions): void => {
-    if (options.equalityCheck === true && isDeepEqual(currentList, list)) {
+    if (options.equalityCheck === true && isDeepEqualUtil(currentList, list)) {
       return;
     }
 
