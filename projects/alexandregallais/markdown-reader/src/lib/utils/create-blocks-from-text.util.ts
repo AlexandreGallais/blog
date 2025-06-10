@@ -6,23 +6,23 @@ export const createBlocksFromTextUtil = (text: string): BlockType[] => {
   let block: BlockType = [];
   let isBlockCode = false;
 
-  getLinesFromTextUtil(text).forEach((line) => {
+  for (const line of getLinesFromTextUtil(text)) {
     const trimmedLine = line.trim();
 
     if (!isBlockCode && trimmedLine === '') {
       blocks.push(block);
       block = [];
-      return;
+      continue;
     }
 
     block.push(line);
 
     if (/^```\w+/u.exec(trimmedLine)) {
       isBlockCode = true;
-    } else if (isBlockCode && /^```/u.exec(trimmedLine)) {
+    } else if (isBlockCode && /^```$/u.exec(trimmedLine)) {
       isBlockCode = false;
     }
-  });
+  }
 
   return blocks;
 };

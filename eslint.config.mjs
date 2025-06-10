@@ -39,6 +39,7 @@ export default typescript.config(
       'sort-imports': 'off',
       'max-statements': 'off',
       'new-cap': 'off',
+      'no-continue': 'off',
       'no-console': ['error', { allow: ['warn', 'error'] }],
       'no-duplicate-imports': 'off',
       'no-undefined': 'off',

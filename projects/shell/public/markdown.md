@@ -1,8 +1,14 @@
 # Sample Markdown Document
 
+*lorem*
+ipsum
+**dolor**\
+amet\
+sit
+
 ## Introduction
 
-*lol* ***This*** is a *sample* markdown document demonstrating various markdown features.
+*consectetur* ***This*** is a *sample* markdown document demonstrating various markdown features.
 
 [google](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
 
@@ -17,9 +23,9 @@ sdgsdgdsgds
 Multi lines\
 text
 
-mdr
-lol
-kikoo
+dolor
+sit
+amet
 
 ## Lists
 
@@ -29,8 +35,8 @@ kikoo
 - Item 2
   - Nested item 2.1
   - Nested item 2.2
-    - lol\
-      mdr
+    - ipsum\
+      dolor
 - Item 3
   - Nested item 3.1
     - A
@@ -46,7 +52,10 @@ kikoo
         - C
           - D
             - E
-              - F
+              - F *ipsum*
+                **dolor**\
+                *amet* lorem consectetur
+                *ipsum*
     - A
 - 0
   - Nested item 3.2

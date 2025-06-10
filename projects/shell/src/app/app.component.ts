@@ -31,7 +31,13 @@ export class AppComponent implements AfterViewInit {
 
     const t = createBlocksFromTextUtil(value);
     t.forEach((a) => {
-      this.element().nativeElement.append(createElementFromBlockUtil(a));
+      const el = createElementFromBlockUtil(a);
+
+      if (!el) {
+        return;
+      }
+
+      this.element().nativeElement.append(el);
     });
 
     console.log(t);

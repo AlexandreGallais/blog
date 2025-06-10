@@ -27,7 +27,6 @@ export const createInlineElementsFromContentUtil = (
       const match = regex.exec(remaining);
 
       if (!(hasMatched = match !== null)) {
-        // eslint-disable-next-line no-continue
         continue;
       }
 
@@ -50,7 +49,6 @@ export const createInlineElementsFromContentUtil = (
     }
 
     if (hasMatched) {
-      // eslint-disable-next-line no-continue
       continue;
     }
 

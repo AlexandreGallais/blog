@@ -1,34 +1,33 @@
 import { UTILS } from '@alexandregallais/utils';
-import type { BlockType, CreateElementFunctionType } from '../structures';
+import type { BlockType } from '../structures';
 import {
-  createElementHeaderFromBlockUtil,
-  createElementListFromBlockUtil,
-  createElementParagraphFromBlockUtil,
+  createElementHeaderUtil,
+  createElementListUtil,
+  createElementParagraphUtil,
 } from './index';
 
 export const createElementFromBlockUtil = (block: BlockType): HTMLElement => {
-  const marker = block[UTILS.ARRAY.FIRST_INDEX]?.trim().split(' ')[
-    UTILS.ARRAY.FIRST_INDEX
-  ];
+  const createElements = [createElementHeaderUtil, createElementListUtil];
+  const blockFirstLine = block[UTILS.ARRAY.FIRST_INDEX];
 
-  if (marker === undefined) {
-    throw new Error('');
+  // eslint-disable-next-line @typescript-eslint/init-declarations
+  let element: HTMLElement | undefined;
+
+  if (blockFirstLine === undefined) {
+    throw new Error('The text block is empty.');
   }
 
-  /* eslint-disable @typescript-eslint/naming-convention */
-  const markerFunctionMap: Record<string, CreateElementFunctionType> = {
-    '#': createElementHeaderFromBlockUtil,
-    '##': createElementHeaderFromBlockUtil,
-    '###': createElementHeaderFromBlockUtil,
-    '####': createElementHeaderFromBlockUtil,
-    '#####': createElementHeaderFromBlockUtil,
-    '######': createElementHeaderFromBlockUtil,
-    '-': createElementListFromBlockUtil,
-  };
-  /* eslint-enable @typescript-eslint/naming-convention */
+  for (const [regex, elementFunction] of createElements) {
+    const match = regex.exec(blockFirstLine);
 
-  const markerFunction =
-    markerFunctionMap[marker] ?? createElementParagraphFromBlockUtil;
+    if (!match) {
+      continue;
+    }
 
-  return markerFunction(block);
+    element = elementFunction(block);
+
+    break;
+  }
+
+  return element ?? createElementParagraphUtil[UTILS.NUMBER.ONE](block);
 };
