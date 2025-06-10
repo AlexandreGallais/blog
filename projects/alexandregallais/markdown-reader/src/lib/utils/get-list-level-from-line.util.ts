@@ -1,6 +1,6 @@
 import { UTILS } from '@alexandregallais/utils';
 
-export const getListLevelFromLineUtils = (line: string): undefined | number => {
+export const getListLevelFromLineUtil = (line: string): undefined | number => {
   const match = /^\s*[-*+]\s+/u.exec(line);
 
   if (!match) {

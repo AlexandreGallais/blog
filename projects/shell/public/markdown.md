@@ -2,16 +2,17 @@
 
 ## Introduction
 
-***This*** is a sample markdown document demonstrating various markdown features.
+*lol* ***This*** is a *sample* markdown document demonstrating various markdown features.
 
 [google](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
 
-![msdf](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
+![google](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
 
 ## Text Formatting
 
-**Bold text** and *italic text* are common formatting options.
-You can also use **~~strikethrough~~** ~text~.
+*hihi* qsf qfs qsf q *haha* ldslkgf jslgkj sldgj**Bold text** and *italic text* are common formatting options.
+You can also use ***~~strikethrough~~*** ~text~.s dgsd g sdg sdg sdg sdg sdg sdg sd gsg sdg sdg sdg sdg sdg sdg sd s dg\
+sdgsdgdsgds
 
 Multi lines\
 text

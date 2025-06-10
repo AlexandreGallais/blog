@@ -1,7 +1,7 @@
 import { isHeaderLevelUtil } from '@alexandregallais/utils';
 import type { CreateElementFunctionType } from '../structures';
 
-export const createElementHeaderFromBlockUtils: CreateElementFunctionType<
+export const createElementHeaderFromBlockUtil: CreateElementFunctionType<
   HTMLHeadingElement
 > = (block) => {
   const [firstLine] = block;

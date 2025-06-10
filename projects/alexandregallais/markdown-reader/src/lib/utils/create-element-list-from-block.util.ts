@@ -1,8 +1,8 @@
 import { getNthParentElementUtil, UTILS } from '@alexandregallais/utils';
 import type { CreateElementFunctionType } from '../structures';
-import { getListLevelFromLineUtils } from './index';
+import { getListLevelFromLineUtil } from './index';
 
-export const createElementListFromBlockUtils: CreateElementFunctionType<
+export const createElementListFromBlockUtil: CreateElementFunctionType<
   HTMLUListElement
   // eslint-disable-next-line max-lines-per-function
 > = (block) => {
@@ -13,7 +13,7 @@ export const createElementListFromBlockUtils: CreateElementFunctionType<
   let currentLi = document.createElement('li');
 
   block.forEach((line) => {
-    const level = getListLevelFromLineUtils(line);
+    const level = getListLevelFromLineUtil(line);
     const content = line.trim().replace(/^[-*+]\s+/u, '');
 
     if (level === undefined) {
