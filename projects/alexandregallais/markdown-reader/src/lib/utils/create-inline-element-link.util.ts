@@ -1,7 +1,7 @@
-import { createInlineElementsFromContentUtil } from './index';
+import { createInlineElementUtil } from './index';
 import type { CreateInlineElementType } from '../structures';
 
-export const createInlineLinkElementUtil: CreateInlineElementType<HTMLAnchorElement> =
+export const createInlineElementLinkUtil: CreateInlineElementType<HTMLAnchorElement> =
   [
     /\[(?<content>[^\]]+)\]\((?<href>[^)]+)\)/u,
     (match: RegExpExecArray): HTMLAnchorElement => {
@@ -11,7 +11,7 @@ export const createInlineLinkElementUtil: CreateInlineElementType<HTMLAnchorElem
       const node =
         content === undefined
           ? [document.createTextNode('')]
-          : createInlineElementsFromContentUtil(content);
+          : createInlineElementUtil(content);
 
       if (href !== undefined) {
         element.href = href;

@@ -6,9 +6,11 @@ import {
   viewChild,
 } from '@angular/core';
 import { httpResource } from '@angular/common/http';
-import { createBlocksFromTextUtil } from '@alexandregallais/markdown-reader';
+import {
+  createBlocksUtil,
+  createElementUtil,
+} from '@alexandregallais/markdown-reader';
 import { getRect } from '@alexandregallais/svg-shape-creator/src/lib/rectangle';
-import { createElementFromBlockUtil } from '@alexandregallais/markdown-reader/src/lib/utils/create-element-from-block.util';
 
 @Component({
   selector: 'div[shell]',
@@ -29,15 +31,9 @@ export class AppComponent implements AfterViewInit {
       return;
     }
 
-    const t = createBlocksFromTextUtil(value);
+    const t = createBlocksUtil(value);
     t.forEach((a) => {
-      const el = createElementFromBlockUtil(a);
-
-      if (!el) {
-        return;
-      }
-
-      this.element().nativeElement.append(el);
+      this.element().nativeElement.append(createElementUtil(a));
     });
 
     console.log(t);

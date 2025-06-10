@@ -1,5 +1,5 @@
 import type { BlockType, CreateElementType } from '../structures';
-import { createInlineElementsFromContentUtil } from '@alexandregallais/markdown-reader/src/lib/utils/create-inline-elements-from-content.util';
+import { createInlineElementUtil } from './index';
 import { getLastIndexUtil, UTILS } from '@alexandregallais/utils';
 
 export const createElementParagraphUtil: CreateElementType<HTMLParagraphElement> =
@@ -10,7 +10,7 @@ export const createElementParagraphUtil: CreateElementType<HTMLParagraphElement>
       // const br = false;
 
       block.forEach((line, i) => {
-        const inlineElements = createInlineElementsFromContentUtil(line);
+        const inlineElements = createInlineElementUtil(line);
         const lastElement = inlineElements.pop();
         let br = false;
 

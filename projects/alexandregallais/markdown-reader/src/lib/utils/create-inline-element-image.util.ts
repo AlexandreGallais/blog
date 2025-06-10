@@ -1,6 +1,6 @@
 import type { CreateInlineElementType } from '../structures';
 
-export const createInlineImageElementUtil: CreateInlineElementType<HTMLImageElement> =
+export const createInlineElementImageUtil: CreateInlineElementType<HTMLImageElement> =
   [
     /!\[(?<alt>[^\]]*)\]\((?<src>[^)]+)\)/u,
     (match: RegExpExecArray): HTMLImageElement => {

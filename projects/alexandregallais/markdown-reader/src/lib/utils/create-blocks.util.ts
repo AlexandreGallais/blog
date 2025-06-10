@@ -1,7 +1,7 @@
 import { getLinesFromTextUtil } from '@alexandregallais/utils';
 import type { BlockType } from '../structures';
 
-export const createBlocksFromTextUtil = (text: string): BlockType[] => {
+export const createBlocksUtil = (text: string): BlockType[] => {
   const blocks: BlockType[] = [];
   let block: BlockType = [];
   let isBlockCode = false;

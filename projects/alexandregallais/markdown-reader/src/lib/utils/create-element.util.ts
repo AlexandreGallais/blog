@@ -6,7 +6,7 @@ import {
   createElementParagraphUtil,
 } from './index';
 
-export const createElementFromBlockUtil = (block: BlockType): HTMLElement => {
+export const createElementUtil = (block: BlockType): HTMLElement => {
   const createElements = [createElementHeaderUtil, createElementListUtil];
   const blockFirstLine = block[UTILS.ARRAY.FIRST_INDEX];
 

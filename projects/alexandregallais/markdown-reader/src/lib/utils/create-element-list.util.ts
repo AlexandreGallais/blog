@@ -1,9 +1,6 @@
 import { getNthParentElementUtil, UTILS } from '@alexandregallais/utils';
 import type { BlockType, CreateElementType } from '../structures';
-import {
-  createInlineElementsFromContentUtil,
-  getListLevelFromLineUtil,
-} from './index';
+import { createInlineElementUtil, getListLevelUtil } from './index';
 
 export const createElementListUtil: CreateElementType<HTMLUListElement> = [
   /^-\s/u,
@@ -15,9 +12,9 @@ export const createElementListUtil: CreateElementType<HTMLUListElement> = [
     let currentLevel = 0;
 
     for (const line of block) {
-      const level = getListLevelFromLineUtil(line);
+      const level = getListLevelUtil(line);
       const content = line.trim().replace(/^[-*+]\s+/u, '');
-      const inlineElements = createInlineElementsFromContentUtil(content);
+      const inlineElements = createInlineElementUtil(content);
 
       if (level === undefined) {
         if (currentLi.lastChild?.textContent?.endsWith('\\') === true) {
@@ -32,7 +29,7 @@ export const createElementListUtil: CreateElementType<HTMLUListElement> = [
           continue;
         }
 
-        currentLi.append(...createInlineElementsFromContentUtil(` ${content}`));
+        currentLi.append(...createInlineElementUtil(` ${content}`));
 
         continue;
       }

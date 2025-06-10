@@ -1,15 +1,15 @@
-import { createInlineElementsFromContentUtil } from './index';
+import { createInlineElementUtil } from './index';
 import type { CreateInlineElementType } from '../structures';
 
-export const createInlineBoldElementUtil: CreateInlineElementType = [
-  /\*{2}(?<content>\**[^*]+\**)\*{2}/u,
+export const createInlineElementItalicUtil: CreateInlineElementType = [
+  /\*(?<content>[^*]+)\*/u,
   (match: RegExpExecArray): HTMLElement => {
-    const element = document.createElement('strong');
+    const element = document.createElement('em');
     const content = match.groups?.['content'];
     const node =
       content === undefined
         ? [document.createTextNode('')]
-        : createInlineElementsFromContentUtil(content);
+        : createInlineElementUtil(content);
 
     element.append(...node);
 

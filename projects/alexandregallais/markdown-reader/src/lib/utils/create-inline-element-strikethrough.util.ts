@@ -1,7 +1,7 @@
 import type { CreateInlineElementType } from '../structures';
-import { createInlineElementsFromContentUtil } from '@alexandregallais/markdown-reader';
+import { createInlineElementUtil } from '@alexandregallais/markdown-reader';
 
-export const createInlineStrikethroughElementUtil: CreateInlineElementType<HTMLModElement> =
+export const createInlineElementStrikethroughUtil: CreateInlineElementType<HTMLModElement> =
   [
     /~{2}(?<content>[^~]+)~{2}/u,
     (match: RegExpExecArray): HTMLModElement => {
@@ -10,7 +10,7 @@ export const createInlineStrikethroughElementUtil: CreateInlineElementType<HTMLM
       const node =
         content === undefined
           ? [document.createTextNode('')]
-          : createInlineElementsFromContentUtil(content);
+          : createInlineElementUtil(content);
 
       element.append(...node);
 

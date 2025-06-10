@@ -1,22 +1,20 @@
 import { UTILS } from '@alexandregallais/utils';
 import {
-  createInlineBoldElementUtil,
-  createInlineImageElementUtil,
-  createInlineItalicElementUtil,
-  createInlineLinkElementUtil,
-  createInlineStrikethroughElementUtil,
+  createInlineElementBoldUtil,
+  createInlineElementImageUtil,
+  createInlineElementItalicUtil,
+  createInlineElementLinkUtil,
+  createInlineElementStrikethroughUtil,
 } from './index';
 
-export const createInlineElementsFromContentUtil = (
-  content: string,
-): Node[] => {
+export const createInlineElementUtil = (content: string): Node[] => {
   const elements: Node[] = [];
   const createInlineElements = [
-    createInlineImageElementUtil,
-    createInlineLinkElementUtil,
-    createInlineBoldElementUtil,
-    createInlineItalicElementUtil,
-    createInlineStrikethroughElementUtil,
+    createInlineElementImageUtil,
+    createInlineElementLinkUtil,
+    createInlineElementBoldUtil,
+    createInlineElementItalicUtil,
+    createInlineElementStrikethroughUtil,
   ];
 
   let remaining = content;
@@ -36,7 +34,7 @@ export const createInlineElementsFromContentUtil = (
       );
 
       if (previousContent) {
-        elements.push(...createInlineElementsFromContentUtil(previousContent));
+        elements.push(...createInlineElementUtil(previousContent));
       }
 
       elements.push(elementFunction(match));
