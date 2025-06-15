@@ -5,6 +5,7 @@ export * from './create-element-list.util';
 export * from './create-element-paragraph.util';
 export * from './create-inline-element.util';
 export * from './create-inline-element-bold.util';
+export * from './create-inline-element-code.util';
 export * from './create-inline-element-image.util';
 export * from './create-inline-element-italic.util';
 export * from './create-inline-element-link.util';

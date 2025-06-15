@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "shell:serve": "ng serve --project=shell --no-hmr",
+    "shell:build": "ng build --project=shell",
     "@alexandregallais/markdown-reader:build": "ng build --project='@alexandregallais/markdown-reader'"
   },
   "private": true,
@@ -14,7 +15,7 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@ibm/plex-sans": "^1.1.0",
+    "@ibm/plex": "^6.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

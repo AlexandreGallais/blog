@@ -1,6 +1,7 @@
 import { UTILS } from '@alexandregallais/utils';
 import {
   createInlineElementBoldUtil,
+  createInlineElementCodeUtil,
   createInlineElementImageUtil,
   createInlineElementItalicUtil,
   createInlineElementLinkUtil,
@@ -12,6 +13,7 @@ export const createInlineElementUtil = (content: string): Node[] => {
   const createInlineElements = [
     createInlineElementImageUtil,
     createInlineElementLinkUtil,
+    createInlineElementCodeUtil,
     createInlineElementBoldUtil,
     createInlineElementItalicUtil,
     createInlineElementStrikethroughUtil,

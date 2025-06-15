@@ -8,9 +8,11 @@ sit
 
 ## Introduction
 
-*consectetur* ***This*** is a *sample* markdown document demonstrating various markdown features.
+*consectetur* `hello` ***This*** is a *sample* markdown document demonstrating various markdown features.
 
-[google](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
+`hello`
+
+[***google***](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
 
 ![google](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png)
 
