@@ -9,12 +9,32 @@
       name="viewport"
     />
     <link
-      href="favicon.svg"
+      href="../public/assets/favicon.svg"
       rel="icon"
       type="image/svg+xml"
     />
   </head>
   <body>
     <div shell></div>
+    <div id="mathml"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const input = '\\frac{a}{b}';
+
+        const adaptor = MathJax.startup.adaptor;
+        const tex = MathJax.startup.getInputJax();
+        const mml = MathJax.startup.output;
+
+        const doc = MathJax.startup.document;
+        const node = doc.convert(input, {
+          display: true,
+          end: STATE.CONVERT,
+        });
+
+        const mathml = adaptor.outerHTML(node);
+        document.getElementById('mathml').innerText = mathml;
+        console.log(mathml);
+      });
+    </script>
   </body>
 </html>

@@ -1,7 +1,9 @@
-export type * from './affine-2d-matrix.model';
+export type * from './arc-segment.model';
 export type * from './circle.model';
 export type * from './circular-sector.model';
-export type * from './circular-sector-from-radial-line.model';
+export type * from './circular-sector-symmetric.model';
+export type * from './matrix-2d-affine.model';
 export type * from './point-2d.model';
 export type * from './radial-line.model';
-export type * from './shape.model';
+export type * from './ray.model';
+export type * from './vector-2d.model';

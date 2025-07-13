@@ -1,4 +1,4 @@
-import type { Affine2dMatrixModel } from '../structures';
+import type { Matrix2dAffineModel } from '../structures';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const DEFAULT_Y = 0;
@@ -7,7 +7,7 @@ const DEFAULT_Y = 0;
 export const createAffine2dMatrixFromTranslateUtil = (
   x: number,
   y: number = DEFAULT_Y,
-): Affine2dMatrixModel => ({
+): Matrix2dAffineModel => ({
   a: 1,
   b: 0,
   c: 0,

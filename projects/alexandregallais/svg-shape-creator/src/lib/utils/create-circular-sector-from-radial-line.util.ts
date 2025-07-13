@@ -1,5 +1,5 @@
 import type {
-  CircularSectorFromRadialLineModel,
+  CircularSectorSymmetricModel,
   RadialLineModel,
 } from '../structures';
 import { UTILS } from '@alexandregallais/utils';
@@ -7,7 +7,7 @@ import { UTILS } from '@alexandregallais/utils';
 export const createCircularSectorFromRadialLineUtil = (
   radialLine: RadialLineModel,
   aperture: number,
-): CircularSectorFromRadialLineModel => {
+): CircularSectorSymmetricModel => {
   const startAngle =
     (radialLine.angle -
       aperture * UTILS.MATH.HALF +

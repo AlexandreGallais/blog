@@ -10,7 +10,7 @@
       "prefix": "shell",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/shell",
             "index": "projects/shell/src/index.html",
@@ -52,7 +52,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "shell:build:production"
@@ -65,29 +65,6 @@
         }
       }
     },
-    "@alexandregallais/markdown-reader": {
-      "projectType": "library",
-      "root": "projects/alexandregallais/markdown-reader",
-      "sourceRoot": "projects/alexandregallais/markdown-reader/src",
-      "prefix": "mdr",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/alexandregallais/markdown-reader/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/alexandregallais/markdown-reader/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/alexandregallais/markdown-reader/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        }
-      }
-    },
     "@alexandregallais/utils": {
       "projectType": "library",
       "root": "projects/alexandregallais/utils",
@@ -95,7 +72,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/alexandregallais/utils/ng-package.json"
           },
@@ -108,16 +85,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/alexandregallais/utils/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
         }
       }
     },
@@ -128,7 +95,7 @@
       "prefix": "svgsc",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/alexandregallais/svg-shape-creator/ng-package.json"
           },
@@ -141,16 +108,96 @@
             }
           },
           "defaultConfiguration": "production"
+        }
+      }
+    },
+    "symbol": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss",
+          "skipTests": true
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "root": "projects/symbol",
+      "sourceRoot": "projects/symbol/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
           "options": {
-            "tsConfig": "projects/alexandregallais/svg-shape-creator/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
+            "browser": "projects/symbol/src/main.ts",
+            "tsConfig": "projects/symbol/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/symbol/public"
+              }
+            ],
+            "styles": ["projects/symbol/src/styles.scss"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "symbol:build:production"
+            },
+            "development": {
+              "buildTarget": "symbol:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
         }
       }
     }
@@ -160,28 +207,31 @@
       "skipTests": true,
       "style": "scss",
       "standalone": true,
-      "experimentalZoneless": true,
       "minimal": true,
       "routing": true,
-      "serverRouting": false,
       "ssr": false,
-      "strict": true
+      "strict": true,
+      "zoneless": true
     },
     "@schematics/angular:component": {
       "displayBlock": true,
       "changeDetection": "OnPush",
-      "skipSelector": true,
       "style": "scss",
       "type": "component",
-      "skipTests": true
+      "skipTests": true,
+      "inlineTemplate": false,
+      "inlineStyle": false
     },
     "@schematics/angular:class": {
       "skipTests": true
     },
     "@schematics/angular:directive": {
-      "skipTests": true
+      "skipTests": true,
+      "type": "directive"
     },
-    "@schematics/angular:enum": {},
+    "@schematics/angular:enum": {
+      "type": "enum"
+    },
     "@schematics/angular:guard": {
       "functional": true,
       "implements": ["CanActivate"],
@@ -191,7 +241,9 @@
       "functional": true,
       "skipTests": true
     },
-    "@schematics/angular:interface": {},
+    "@schematics/angular:interface": {
+      "type": "model"
+    },
     "@schematics/angular:library": {
       "standalone": true
     },
@@ -203,10 +255,18 @@
       "skipTests": true
     },
     "@schematics/angular:service": {
-      "skipTests": true
+      "skipTests": true,
+      "type": "service"
     },
     "@schematics/angular:ng-new": {
-      "skipTests": true
+      "skipTests": true,
+      "style": "scss",
+      "standalone": true,
+      "minimal": true,
+      "routing": true,
+      "ssr": false,
+      "strict": true,
+      "zoneless": true
     },
     "@schematics/angular:web-worker": {
       "snippet": true

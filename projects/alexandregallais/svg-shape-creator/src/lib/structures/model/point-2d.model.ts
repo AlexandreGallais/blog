@@ -1,4 +1,11 @@
+import type { Coordinate } from '../types';
+
+/**
+ * A 2D point with Cartesian coordinates.
+ */
 export interface Point2dModel {
-  x: number;
-  y: number;
+  /** Horizontal coordinate */
+  x: Coordinate;
+  /** Vertical coordinate */
+  y: Coordinate;
 }

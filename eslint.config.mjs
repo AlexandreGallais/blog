@@ -70,6 +70,7 @@ export default typescript.config(
       '@typescript-eslint/no-extraneous-class': 'warn',
       '@typescript-eslint/prefer-enum-initializers': 'off',
       '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+      '@angular-eslint/no-developer-preview': 'off',
     },
   },
   {
@@ -78,10 +79,12 @@ export default typescript.config(
     rules: {
       '@angular-eslint/template/i18n': 'off',
       '@angular-eslint/template/no-call-expression': 'off',
+      '@angular-eslint/template/label-has-associated-control': 'off',
+      '@angular-eslint/template/elements-content': 'off',
     },
   },
   {
-    files: ['projects/shell/src/index.html'],
+    files: ['**/index.html'],
     rules: {
       'prettier/prettier': 'off',
     },

@@ -1,0 +1,27 @@
+@use '../../styles/color';
+@use '../../styles/font';
+@use '../../styles/variable';
+
+:host {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: variable.$input-size;
+  min-width: variable.$input-size;
+  height: variable.$input-size;
+  min-height: variable.$input-size;
+  cursor: pointer;
+  background-color: color.$input-background;
+  border-radius: variable.$border-radius-m;
+
+  @include font.input;
+
+  &:hover {
+    background-color: color.$button-hover;
+  }
+
+  &:active {
+    background-color: color.$button-active;
+  }
+}

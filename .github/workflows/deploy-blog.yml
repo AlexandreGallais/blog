@@ -1,10 +1,10 @@
-name: Deploy blog to GitHub Pages.
+name: CI-CD - Blog to GitHub Pages
 
 on:
   push:
     branches: ["main"]
     paths:
-      - 'projects/shell/public/blog/article/**/*.md'
+      - 'projects/shell/public/blog/article/index.txt'
   workflow_dispatch:
 
 permissions:

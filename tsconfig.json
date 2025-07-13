@@ -15,12 +15,10 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "preserve",
 
     // Added
     "removeComments": true,
@@ -45,6 +43,12 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
     "strictTemplates": true
-  }
+  },
+  "references": [
+    {
+      "path": "./projects/symbol/tsconfig.app.json"
+    }
+  ]
 }

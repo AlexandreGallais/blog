@@ -1,0 +1,13 @@
+@use '@ibm/plex/scss/sans/text' as PlexSansText with (
+  $font-prefix: '@ibm/plex'
+);
+@use '@ibm/plex/scss/sans/bold' as PlexSansBold with (
+  $font-prefix: '@ibm/plex'
+);
+@use '@ibm/plex/scss/mono/text' as PlexMonoText with (
+  $font-prefix: '@ibm/plex'
+);
+
+:root {
+  font-family: 'IBM Plex Sans', sans-serif;
+}

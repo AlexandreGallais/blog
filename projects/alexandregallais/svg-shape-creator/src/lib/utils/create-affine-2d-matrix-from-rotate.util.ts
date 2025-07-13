@@ -1,4 +1,4 @@
-import type { Affine2dMatrixModel } from '../structures';
+import type { Matrix2dAffineModel } from '../structures';
 import { UTILS } from '@alexandregallais/utils';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -9,7 +9,7 @@ export const createAffine2dMatrixFromRotateUtil = (
   angle: number,
   cx: number = DEFAULT_CENTER,
   cy: number = DEFAULT_CENTER,
-): Affine2dMatrixModel => {
+): Matrix2dAffineModel => {
   const rad = (angle * Math.PI) / UTILS.MATH.HALF_CIRCLE_DEGREES;
   const cos = Math.cos(rad);
   const sin = Math.sin(rad);

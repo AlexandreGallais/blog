@@ -1,0 +1,42 @@
+@use 'sass:math';
+@use '../../styles/color';
+@use '../../styles/font';
+@use '../../styles/variable';
+
+:host {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: variable.$input-size;
+  min-height: variable.$input-size;
+  background-color: color.$input-background;
+  border: solid 1px color.$input-border;
+  border-radius: variable.$border-radius-m;
+
+  span {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: variable.$input-size - 2px;
+    min-width: variable.$input-size - 2px;
+    height: variable.$input-size - 2px;
+
+    @include font.input-label;
+  }
+
+  input[type='number'] {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    height: variable.$input-size - 2px;
+    padding: 0 variable.$padding-s;
+    cursor: text;
+
+    @include font.input;
+
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+}
